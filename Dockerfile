@@ -18,11 +18,6 @@ RUN tar -C /opt/moviegrabber -xvf /tmp/binhex-moviegrabber-1e2ba1d.tar.gz --stri
 # docker settings
 #################
 
-# set the docker locale
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8  
-
 # map /config to host defined config path (used to store configuration from app)
 VOLUME /config
 
