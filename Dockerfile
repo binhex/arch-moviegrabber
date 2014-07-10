@@ -44,6 +44,15 @@ RUN chmod -R 775 /opt/moviegrabber
 
 ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
 
+# cleanup
+#########
+
+# completely empty pacman cache folder
+RUN pacman -Scc --noconfirm
+
+# remove temporary files
+RUN rm -rf /tmp/*
+
 # run supervisor
 ################
 
