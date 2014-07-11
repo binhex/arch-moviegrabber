@@ -14,13 +14,13 @@ RUN pacman -S python2 sqlite wget python2-pyopenssl unzip --noconfirm
 RUN mkdir /opt/moviegrabber
 
 # download zip from github
-ADD https://github.com/binhex/moviegrabber/archive/moviegrabber-master.zip /opt/moviegrabber
+ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber
 
 # unzip to folder - j option prevents recreation of zipped folder structure
-RUN unzip -j /opt/moviegrabber/moviegrabber-master.zip -d /opt/moviegrabber
+RUN unzip -j /opt/moviegrabber/master.zip -d /opt/moviegrabber
 
 # remove zip
-RUN rm /opt/moviegrabber/moviegrabber-master.zip
+RUN rm /opt/moviegrabber/master.zip
 
 # docker settings
 #################
