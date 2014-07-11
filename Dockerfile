@@ -8,12 +8,19 @@ MAINTAINER binhex
 RUN pacman -Sy --noconfirm
 
 # run pacman to install pre-req
-RUN pacman -S python2 sqlite wget python2-pyopenssl --noconfirm
+RUN pacman -S python2 sqlite wget python2-pyopenssl unzip --noconfirm
 
-# pull app from github
+# make destination folder
 RUN mkdir /opt/moviegrabber
-RUN wget https://github.com/binhex/moviegrabber/tarball/1e2ba1deea205e817564105053981f43d4534595 -O /tmp/binhex-moviegrabber-1e2ba1d.tar.gz
-RUN tar -C /opt/moviegrabber -xvf /tmp/binhex-moviegrabber-1e2ba1d.tar.gz --strip-components 1
+
+# download zip from github
+ADD https://github.com/binhex/moviegrabber/archive/moviegrabber-master.zip /opt/moviegrabber
+
+# unzip to folder - j option prevents recreation of zipped folder structure
+RUN unzip -j /opt/moviegrabber/moviegrabber-master.zip -d /opt/moviegrabber
+
+# remove zip
+RUN rm /opt/moviegrabber/moviegrabber-master.zip
 
 # docker settings
 #################
