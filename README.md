@@ -1,9 +1,9 @@
-moviegrabber
+MovieGrabber
 ============
 
-Latest stable MovieGrabber Git release for Arch Linux.
+MovieGrabber - http://forums.sabnzbd.org/viewtopic.php?f=6&t=8569
 
-This is a Dockerfile for MovieGrabber - http://forums.sabnzbd.org/viewtopic.php?f=6&t=8569
+Latest stable MovieGrabber Git Master release for Arch Linux.
 
 **Pull image**
 
