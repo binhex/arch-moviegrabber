@@ -8,7 +8,7 @@ MAINTAINER binhex
 RUN pacman -Sy --noconfirm
 
 # run pacman to install pre-req
-RUN pacman -S python2 sqlite wget python2-pyopenssl unzip --noconfirm
+RUN pacman -S python2 sqlite python2-pyopenssl unzip --noconfirm
 
 # make destination folder
 RUN mkdir /opt/moviegrabber
