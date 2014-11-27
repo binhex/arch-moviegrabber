@@ -16,7 +16,7 @@ ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
 # install base devel, install app using packer, set perms, cleanup
 RUN pacman -Sy --noconfirm && \
 	pacman -S python2 sqlite python2-pyopenssl unzip --noconfirm && \
-	mkdir /opt/moviegrabber && \
+	mkdir -p /opt/moviegrabber && \
 	unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber && \
 	mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber/ && \
 	rm /opt/moviegrabber/moviegrabber-development.zip && \
