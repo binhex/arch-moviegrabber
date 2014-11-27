@@ -1,31 +1,34 @@
-FROM binhex/arch-base
+FROM binhex/arch-base:2014100603
 MAINTAINER binhex
 
-# install application
-#####################
-
-# update package databases for arch
-RUN pacman -Sy --noconfirm
-
-# run pacman to install pre-req
-RUN pacman -S python2 sqlite python2-pyopenssl unzip --noconfirm
-
-# make destination folder
-RUN mkdir /opt/moviegrabber
+# additional files
+##################
 
 # download zip from github - url zip name is different to destination
 ADD https://github.com/binhex/moviegrabber/archive/development.zip /opt/moviegrabber/moviegrabber-development.zip
 
-# unzip to folder
-RUN unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber
+# add supervisor conf file for app
+ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
 
-# move unzipped contents back to moviegrabber root
-RUN mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber/
+# install app
+#############
 
-# remove files and folders
-RUN rm /opt/moviegrabber/moviegrabber-development.zip
-RUN rm -rf /opt/moviegrabber/moviegrabber-development/
-
+# install base devel, install app using packer, set perms, cleanup
+RUN pacman -Sy --noconfirm && \
+	pacman -S python2 sqlite python2-pyopenssl unzip --noconfirm && \
+	mkdir /opt/moviegrabber && \
+	unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber && \
+	mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber/ && \
+	rm /opt/moviegrabber/moviegrabber-development.zip && \
+	rm -rf /opt/moviegrabber/moviegrabber-development/ && \
+	chown -R nobody:users /opt/moviegrabber && \
+	chmod -R 775 /opt/moviegrabber && \
+	pacman -Scc --noconfirm && \
+	rm -rf /archlinux/usr/share/locale && \
+	rm -rf /archlinux/usr/share/man && \
+	rm -rf /root/* && \
+	rm -rf /tmp/*
+		
 # docker settings
 #################
 
@@ -40,29 +43,6 @@ VOLUME /media
 
 # expose port for http
 EXPOSE 9191
-
-# set permissions
-#################
-
-# change owner
-RUN chown -R nobody:users /opt/moviegrabber
-
-# set permissions
-RUN chmod -R 775 /opt/moviegrabber
-
-# add conf file
-###############
-
-ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
-
-# cleanup
-#########
-
-# completely empty pacman cache folder
-RUN pacman -Scc --noconfirm
-
-# remove temporary files
-RUN rm -rf /tmp/*
 
 # run supervisor
 ################
