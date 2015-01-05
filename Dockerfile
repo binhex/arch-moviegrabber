@@ -1,4 +1,4 @@
-FROM binhex/arch-base:2014101300
+FROM binhex/arch-base:2015010500
 MAINTAINER binhex
 
 # additional files
@@ -23,9 +23,9 @@ RUN pacman -Sy --noconfirm && \
 	rm -rf /opt/moviegrabber/moviegrabber-development/ && \
 	chown -R nobody:users /opt/moviegrabber && \
 	chmod -R 775 /opt/moviegrabber && \
-	pacman -Scc --noconfirm && \
-	rm -rf /archlinux/usr/share/locale && \
-	rm -rf /archlinux/usr/share/man && \
+	yes|pacman -Scc && \
+	rm -rf /usr/share/locale/* && \
+	rm -rf /usr/share/man/* && \
 	rm -rf /root/* && \
 	rm -rf /tmp/*
 		
