@@ -10,24 +10,15 @@ ADD https://github.com/binhex/moviegrabber/archive/development.zip /opt/moviegra
 # add supervisor conf file for app
 ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
 
+# add install bash script
+ADD install.sh /root/install.sh
+
 # install app
 #############
 
-# install base devel, install app using packer, set perms, cleanup
-RUN pacman -Sy --noconfirm && \
-	pacman -S python2 sqlite python2-pyopenssl unzip --noconfirm && \
-	mkdir -p /opt/moviegrabber && \
-	unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber && \
-	mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber/ && \
-	rm /opt/moviegrabber/moviegrabber-development.zip && \
-	rm -rf /opt/moviegrabber/moviegrabber-development/ && \
-	chown -R nobody:users /opt/moviegrabber && \
-	chmod -R 775 /opt/moviegrabber && \
-	yes|pacman -Scc && \
-	rm -rf /usr/share/locale/* && \
-	rm -rf /usr/share/man/* && \
-	rm -rf /root/* && \
-	rm -rf /tmp/*
+# make executable and run bash scripts to install app
+RUN chmod +x /root/install.sh && \
+	/bin/bash /root/install.sh
 		
 # docker settings
 #################
