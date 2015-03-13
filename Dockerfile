@@ -4,20 +4,20 @@ MAINTAINER binhex
 # additional files
 ##################
 
+# add supervisor conf file for app
+ADD *.conf /etc/supervisor/conf.d/
+
 # download zip from github - url zip name is different to destination
 ADD https://github.com/binhex/moviegrabber/archive/development.zip /opt/moviegrabber/moviegrabber-development.zip
 
-# add supervisor conf file for app
-ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
-
 # add install bash script
-ADD install.sh /root/install.sh
+ADD *.sh /root/
 
 # install app
 #############
 
 # make executable and run bash scripts to install app
-RUN chmod +x /root/install.sh && \
+RUN chmod +x /root/*.sh && \
 	/bin/bash /root/install.sh
 		
 # docker settings
