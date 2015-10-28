@@ -13,6 +13,9 @@ pacman -S --needed $pacman_packages --noconfirm
 # create destination directories
 mkdir -p /opt/moviegrabber
 
+# download moviegrabber from github
+curl -o /opt/moviegrabber/moviegrabber-development.zip -L https://github.com/binhex/moviegrabber/archive/development.zip
+
 # unzip moviegrabber and move
 unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber
 mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber

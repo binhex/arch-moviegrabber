@@ -7,9 +7,6 @@ MAINTAINER binhex
 # add supervisor conf file for app
 ADD *.conf /etc/supervisor/conf.d/
 
-# download zip from github - url zip name is different to destination
-ADD https://github.com/binhex/moviegrabber/archive/development.zip /opt/moviegrabber/moviegrabber-development.zip
-
 # add install bash script
 ADD *.sh /root/
 
