@@ -5,10 +5,10 @@ MAINTAINER binhex
 ##################
 
 # add supervisor conf file for app
-ADD *.conf /etc/supervisor/conf.d/
+ADD setup/*.conf /etc/supervisor/conf.d/
 
 # add install bash script
-ADD *.sh /root/
+ADD setup/*.sh /root/
 
 # install app
 #############
@@ -16,7 +16,7 @@ ADD *.sh /root/
 # make executable and run bash scripts to install app
 RUN chmod +x /root/*.sh && \
 	/bin/bash /root/install.sh
-		
+
 # docker settings
 #################
 
@@ -32,8 +32,8 @@ VOLUME /media
 # expose port for http
 EXPOSE 9191
 
-# run supervisor
-################
+# set permissions
+#################
 
-# run supervisor
-CMD ["supervisord", "-c", "/etc/supervisor.conf", "-n"]
+# run script to set uid, gid and permissions
+CMD ["/bin/bash", "/root/init.sh"]

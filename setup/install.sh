@@ -24,10 +24,6 @@ mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber
 rm /opt/moviegrabber/moviegrabber-development.zip
 rm -rf /opt/moviegrabber/moviegrabber-development/
 
-# set permissions
-chown -R nobody:users /opt/moviegrabber
-chmod -R 775 /opt/moviegrabber
-
 # cleanup
 yes|pacman -Scc
 rm -rf /usr/share/locale/*
