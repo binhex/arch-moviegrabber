@@ -8,7 +8,7 @@ MAINTAINER binhex
 ADD setup/*.conf /etc/supervisor/conf.d/
 
 # add install bash script
-ADD setup/*.sh /root/
+ADD setup/root/*.sh /root/
 
 # install app
 #############
