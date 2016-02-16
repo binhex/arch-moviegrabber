@@ -38,8 +38,8 @@ else
 fi
 
 # set permissions inside container
-chown -R "${UID}":"${GID}" /opt/moviegrabber
-chmod -R 775 /opt/moviegrabber
+chown -R "${UID}":"${GID}" /opt/moviegrabber /home/nobody
+chmod -R 775 /opt/moviegrabber /home/nobody
 
 echo "[info] Starting Supervisor..."
 
