@@ -7,7 +7,6 @@ set -e
 pacman_packages="python2 sqlite python2-pyopenssl unzip"
 
 # install pre-reqs
-pacman -Syu --ignore filesystem --noconfirm
 pacman -S --needed $pacman_packages --noconfirm
 
 # create destination directories
