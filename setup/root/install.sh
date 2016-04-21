@@ -23,12 +23,13 @@ mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber
 rm /opt/moviegrabber/moviegrabber-development.zip
 rm -rf /opt/moviegrabber/moviegrabber-development/
 
-# install pip
-curl -o /tmp/pip.tar.gz -L https://pypi.python.org/packages/source/p/pip/pip-8.1.1.tar.gz#md5=6b86f11841e89c8241d689956ba99ed7
-cd /tmp; tar -xvf /tmp/pip.tar.gz
-cd /tmp/pip*; /usr/bin/python2 setup.py install
+# bootstrap tools
+/usr/bin/python2 /opt/moviegrabber/scripts/bootstrap/distribute_setup.py
 
-# install pip wheel archives
+# install pip
+/usr/bin/easy_install pip
+
+# install wheel archives
 /usr/bin/pip install --force-reinstall --ignore-installed --upgrade --no-index --no-deps --no-cache-dir /opt/moviegrabber/wheel/*
 
 # cleanup
