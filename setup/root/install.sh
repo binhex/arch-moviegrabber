@@ -30,7 +30,7 @@ rm -rf /opt/moviegrabber/moviegrabber-development/
 /usr/bin/easy_install pip
 
 # install wheel archives
-/usr/bin/pip install --force-reinstall --ignore-installed --upgrade --no-index --no-deps --no-cache-dir /opt/moviegrabber/wheel/*
+/usr/bin/pip install --force-reinstall --ignore-installed --upgrade --no-index --no-deps --no-cache-dir /opt/moviegrabber/lib/wheel/*
 
 # cleanup
 yes|pacman -Scc
