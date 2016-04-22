@@ -23,15 +23,6 @@ mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber
 rm /opt/moviegrabber/moviegrabber-development.zip
 rm -rf /opt/moviegrabber/moviegrabber-development/
 
-# bootstrap tools
-/usr/bin/python2 /opt/moviegrabber/scripts/bootstrap/ez_setup.py
-
-# install pip
-/usr/bin/easy_install pip
-
-# install wheel archives
-/usr/bin/pip install --force-reinstall --ignore-installed --upgrade --no-index --no-deps --no-cache-dir /opt/moviegrabber/lib/wheel/*
-
 # cleanup
 yes|pacman -Scc
 rm -rf /usr/share/locale/*
