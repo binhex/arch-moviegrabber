@@ -7,7 +7,7 @@ set -e
 mkdir -p /opt/moviegrabber
 
 # download moviegrabber from github
-curl -o /opt/moviegrabber/moviegrabber-development.zip -L https://github.com/binhex/moviegrabber/archive/development.zip
+curl --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -o /opt/moviegrabber/moviegrabber-development.zip -L https://github.com/binhex/moviegrabber/archive/development.zip
 
 # unzip moviegrabber and move
 unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber
