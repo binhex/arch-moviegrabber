@@ -3,16 +3,21 @@
 # exit script if return code != 0
 set -e
 
+repo_name="binhex"
+app_name="moviegrabber"
+install_name="moviegrabber"
+
+# download install zip file
+curly.sh -rc 6 -rw 10 -of "/tmp/${app_name}.zip" -url "https://github.com/${repo_name}/${app_name}/archive/development.zip"
+
+# unzip to /tmp
+unzip "/tmp/${app_name}.zip" -d /tmp
+
 # create destination directories
-mkdir -p /opt/moviegrabber
+mkdir -p "/opt/${install_name}/"
 
-# download moviegrabber from github
-curl --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -o /opt/moviegrabber/moviegrabber-development.zip -L https://github.com/binhex/moviegrabber/archive/development.zip
+# move to destination folder
+mv /tmp/${app_name}*/* "/opt/${install_name}/"
 
-# unzip moviegrabber and move
-unzip /opt/moviegrabber/moviegrabber-development.zip -d /opt/moviegrabber
-mv /opt/moviegrabber/moviegrabber-development/* /opt/moviegrabber
-
-# remove source zip file and folder
-rm /opt/moviegrabber/moviegrabber-development.zip
-rm -rf /opt/moviegrabber/moviegrabber-development/
+# remove source zip file
+rm "/tmp/${app_name}.zip"
