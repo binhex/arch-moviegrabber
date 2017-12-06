@@ -44,8 +44,11 @@ aur_packages=""
 # call aur install script (arch user repo)
 source /root/aur.sh
 
-# call custom install script
-source /root/custom.sh
+# github releases
+####
+
+# download sickrage
+/root/github.sh -df "github-download.zip" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/moviegrabber" -go "binhex" -gr "moviegrabber" -rt "source"
 
 # container perms
 ####
