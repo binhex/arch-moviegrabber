@@ -47,7 +47,7 @@ source /root/aur.sh
 # github releases
 ####
 
-# download sickrage
+# download moviegrabber
 /root/github.sh -df "github-download.zip" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/moviegrabber" -go "binhex" -gr "moviegrabber" -rt "source"
 
 # container perms
