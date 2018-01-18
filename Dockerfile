@@ -10,6 +10,9 @@ ADD build/*.conf /etc/supervisor/conf.d/
 # add install bash script
 ADD build/root/*.sh /root/
 
+# add start bash script
+ADD run/nobody/*.sh /home/nobody/
+
 # install app
 #############
 
