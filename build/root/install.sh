@@ -55,8 +55,7 @@ source aur.sh
 ####
 
 # download moviegrabber
-github.sh -df "github-download.zip" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/moviegrabber" -go "binhex" -gr "moviegrabber" -rt "source"
-
+github.sh --install-path "/opt/moviegrabber" --github-owner "binhex" --github-repo "moviegrabber" 
 # container perms
 ####
 
